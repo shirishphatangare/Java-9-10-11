@@ -14,9 +14,23 @@
   </modules>
   
   <properties>
-		<maven.compiler.source>1.9</maven.compiler.source>
-		<maven.compiler.target>1.9</maven.compiler.target>
-		<maven.compiler.release>9</maven.compiler.release>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.release>11</maven.compiler.release>
   </properties>
-	
+
+<!--  With above maven properties in place below plugin block is optional -->  
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>11</release>
+            </configuration>
+        </plugin>
+    </plugins>
+</build> 
+  
 </project>
