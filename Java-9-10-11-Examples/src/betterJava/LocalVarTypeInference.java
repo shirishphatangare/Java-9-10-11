@@ -17,6 +17,20 @@ public class LocalVarTypeInference {
 		//String cat = "Jack";
 		var cat = "Jack";
 		
+		int i,j=0; // allowed
+		int ii=0,jj=0; // allowed
+		//var iii,jjj=0; // ii is not initialized so var can not be used
+		//var iiii=0,jjjj=0; // 'var' is not allowed in a compound declaration
+		
+		int index1 = 5;
+		var index2 = 5;
+		
+		int [] array1 = new int[index1];
+		int [] array2 = new int[index2];
+		//'var' is not allowed as an element type of an array
+		//var [] array3 = new int[index1]; // not allowed 
+		//var [] array4 = new int[index2]; //  not allowed
+		
 		//List<String> catNames = List.of("Ella","Jelly","Eclair");
 		var catNames = List.of("Ella","Jelly","Eclair");
 		
@@ -51,8 +65,8 @@ public class LocalVarTypeInference {
 			System.out.println(i);
 		}*/
 		
-		for(var i=0;i<10;i++) {
-			System.out.println(i);
+		for(var k=0;k<10;k++) {
+			System.out.println(k);
 		}
 		
 		// C) In a try-with-resources 
@@ -142,20 +156,18 @@ public class LocalVarTypeInference {
 		
 		catObjects.forEach(cat -> System.out.println(cat.name + ": " + cat.description));
 		
-		// H) var in Lambda parameters
+		// H) var in Lambda parameters - Since Java 11
 		AddressOperation toSingleLine1 = (String line1, int aptNumber, int zip) -> line1 + ", apt." + aptNumber + " " + zip; // VALID
 		AddressOperation toSingleLine2 = (line1, aptNumber, zip) -> line1 + ", apt." + aptNumber + " " + zip;   // VALID
+		
+		// If var is used in an implicitly typed Lambda expression, it must be used for all formal parameters
 		AddressOperation toSingleLine3 = (var line1, var aptNumber, var zip) -> line1 + ", apt." + aptNumber + " " + zip;  // VALID
 		//AddressOperation toSingleLine4 = (@Nullable var line1, var aptNumber, @ZipCode var zip) -> line1 + ", apt." + aptNumber + " " + zip;  // var allows annotations to be used directly on lambda params
-		
-		
 		
 	}
 	
 	
 	public static void main(String[] args) {
-
-
 
 	}
 	
