@@ -9,3 +9,4 @@
 # The entire contents of any directory in the repository matching that name – including all of its files and subdirectories – will be ignored
 target/
 .settings/
+bin/
